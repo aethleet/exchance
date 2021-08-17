@@ -1,0 +1,42 @@
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Введите почту</mat-label>
+    <input matInput placeholder="2021-01234@students.ssau.ru" [formControl]="email">
+    <!--<mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+  </mat-form-field>
+</div>
+
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Введите пароль</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+<div>
+  <button mat-stroked-button *ngIf="!showReg" class="alert alert-success box-msg" role="alert">Войти</button>
+</div>
+
+<div><a (click)="showConfirmPassword()" *ngIf="!showReg" class="alert alert-success box-msg" role="alert">Зарегистрироваться</a>
+</div>
+
+<div>
+  <mat-form-field appearance="fill" *ngIf="showReg" class="alert alert-success box-msg" role="alert">
+    <mat-label>Повторите пароль</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+<div>
+  <button mat-stroked-button *ngIf="showReg" class="alert alert-success box-msg" role="alert">Зарегистрироваться
+  </button>
+</div>
+
+<div><a (click)="hideConfirmPassword()" *ngIf="showReg" class="alert alert-success box-msg" role="alert">Войти</a></div>
